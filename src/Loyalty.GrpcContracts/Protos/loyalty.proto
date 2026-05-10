@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package loyalty.v1;
+
+option csharp_namespace = "Loyalty.GrpcContracts";
+
+service LoyaltyGrpc {
+  rpc Calculate (LoyaltyRequest) returns (LoyaltyResponse);
+}
+
+message LoyaltyRequest {
+  double purchaseAmount = 1;
+  int32 customerType = 2;
+  repeated double lastMonthPurchases = 3;
+}
+
+message LoyaltyResponse {
+  double finalScore = 1;
+}
